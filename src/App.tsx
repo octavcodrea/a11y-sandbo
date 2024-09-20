@@ -81,7 +81,7 @@ function App() {
 
                     <button
                         onClick={toggleA11y}
-                        className={`fixed bottom-4 right-4 cursor-pointer rounded-md border-none bg-gray-600 px-4 py-2 font-semibold text-white hover:bg-gray-700 ${allyOn ? "bg-green-600 hover:bg-green-700" : ""} `}
+                        className={`fixed bottom-4 right-4 cursor-pointer rounded-md border-none px-4 py-2 font-semibold text-white ${allyOn ? "bg-green-600 hover:bg-green-700" : "bg-gray-600 hover:bg-gray-700"} `}
                     >
                         {allyOn ? "Disable" : "Enable"} A11y Features
                     </button>
