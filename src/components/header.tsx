@@ -14,6 +14,7 @@ import { useStateStore } from "../lib/hooks";
 import BreadcrumbsComponent from "./breadcrumbs";
 import SDiv from "./s-div";
 import SearchBar from "./search-bar";
+import { menuListItemClass } from "../lib/utils";
 
 const profileMenuItems = [
     { name: "Account settings", icon: Settings },
@@ -28,7 +29,7 @@ const Header = () => {
 
     return (
         <SDiv
-            className={c.header}
+            className={`flex items-center justify-between gap-4 bg-white p-4 shadow-md`}
             tag={a11yOn ? "header" : undefined}
             role={a11yOn ? "banner" : undefined}
         >
@@ -38,7 +39,7 @@ const Header = () => {
                 <BreadcrumbsComponent />
             </div>
 
-            <div className={c.rightColumn}>
+            <div className={`flex items-center gap-4`}>
                 <SearchBar a11yOn={a11yOn} />
 
                 <Menu shadow="md" width={250} position="bottom-end">
@@ -60,29 +61,18 @@ const Header = () => {
                                 Notifications
                             </Text>
                         </Menu.Label>
-                        <Menu.Item
-                            classNames={{
-                                itemLabel: c.menuListItem,
-                            }}
-                        >
-                            <FilePlus2 /> New file uploaded
+                        <Menu.Item>
+                            <FilePlus2 className="text-gray-500" /> New file
+                            uploaded
                         </Menu.Item>
 
-                        <Menu.Item
-                            classNames={{
-                                itemLabel: c.menuListItem,
-                            }}
-                        >
-                            <Mail />
+                        <Menu.Item>
+                            <Mail className="text-gray-500" />
                             New message received
                         </Menu.Item>
 
-                        <Menu.Item
-                            classNames={{
-                                itemLabel: c.menuListItem,
-                            }}
-                        >
-                            <Mail />
+                        <Menu.Item>
+                            <Mail className="text-gray-500" />
                             New message received
                         </Menu.Item>
                     </Menu.Dropdown>
@@ -108,13 +98,8 @@ const Header = () => {
 
                     <Menu.Dropdown>
                         {profileMenuItems.map((item, index) => (
-                            <Menu.Item
-                                key={index}
-                                classNames={{
-                                    itemLabel: c.menuListItem,
-                                }}
-                            >
-                                <item.icon />
+                            <Menu.Item key={index}>
+                                <item.icon className="text-gray-500" />
                                 {item.name}
                             </Menu.Item>
                         ))}

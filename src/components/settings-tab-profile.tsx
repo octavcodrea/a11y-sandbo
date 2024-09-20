@@ -30,6 +30,7 @@ const SettingsTabProfile = () => {
                             className="border-none outline-none"
                             value={firstName}
                             onChange={handleInputChange}
+                            aria-label={a11yOn ? "First name" : undefined}
                         />
                     </div>
                 </div>
@@ -46,6 +47,7 @@ const SettingsTabProfile = () => {
                                     lastName: e.target.value,
                                 })
                             }
+                            aria-label={a11yOn ? "Last name" : undefined}
                         />
                     </div>
                 </div>

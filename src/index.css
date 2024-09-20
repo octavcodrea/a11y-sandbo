@@ -27,20 +27,11 @@ button,
     color: inherit;
     cursor: pointer;
 
-    min-width: 32px;
-    min-height: 32px;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
     border-radius: 4px;
-    padding: 5px;
-}
-
-button:hover,
-.button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .aria-announcer {

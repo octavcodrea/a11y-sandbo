@@ -11,7 +11,7 @@ const Settings = () => {
 
     const [activeTab, setActiveTab] = useState("Profile");
 
-    const containerClass = "flex border border-gray-200 rounded";
+    const containerClass = "flex border border-gray-200 rounded-lg ";
     const tabContainerClass =
         "flex flex-col gap-1 p-4 border-r border-gray-200 min-w-[200px]";
     const settingsContainerClass = "flex flex-col gap-4 w-full";
@@ -34,49 +34,28 @@ const Settings = () => {
             <h3 className="text-3xl font-bold">Settings</h3>
             <p>An example of a settings panel with tabs</p>
 
-            {a11yOn ? (
-                <div className={containerClass}>
-                    <div className={tabContainerClass}>
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
-                                className={`justify-start text-lg ${
-                                    activeTab === tab
-                                        ? "font-bold text-blue-500"
-                                        : ""
-                                }`}
-                            >
-                                {tab}
-                            </button>
-                        ))}
-                    </div>
-                    <div className={settingsContainerClass}>
-                        {activeTabContent}
-                    </div>
+            <div className={containerClass}>
+                <div className={tabContainerClass}>
+                    {tabs.map((tab) => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            className={`flex justify-start text-lg ${
+                                activeTab === tab
+                                    ? "font-bold text-blue-500"
+                                    : ""
+                            }`}
+                            role={a11yOn ? "tab" : undefined}
+                            aria-selected={
+                                a11yOn ? activeTab === tab : undefined
+                            }
+                        >
+                            {tab}
+                        </button>
+                    ))}
                 </div>
-            ) : (
-                <div className={containerClass}>
-                    <div className={tabContainerClass}>
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
-                                className={`justify-start text-lg ${
-                                    activeTab === tab
-                                        ? "font-bold text-blue-500"
-                                        : ""
-                                }`}
-                            >
-                                {tab}
-                            </button>
-                        ))}
-                    </div>
-                    <div className={settingsContainerClass}>
-                        {activeTabContent}
-                    </div>
-                </div>
-            )}
+                <div className={settingsContainerClass}>{activeTabContent}</div>
+            </div>
         </div>
     );
 };

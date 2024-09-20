@@ -5,17 +5,19 @@ export const cls = (...classes: (string | undefined)[]) =>
     classes.filter(Boolean).join(" ");
 
 export const getFileIcon = (type: FileItemType) => {
+    const iconClass = "text-gray-400";
+
     switch (type) {
         case "image":
-            return <Image />;
+            return <Image className={iconClass} />;
         case "video":
-            return <FileVideo />;
+            return <FileVideo className={iconClass} />;
         case "audio":
-            return <FileAudio />;
+            return <FileAudio className={iconClass} />;
         case "document":
-            return <File />;
+            return <File className={iconClass} />;
         case "folder":
-            return <Folder />;
+            return <Folder className={iconClass} />;
     }
 };
 
@@ -26,3 +28,5 @@ export const tabContentClass = "flex flex-col gap-4 p-4 w-full min-h-[200px]";
 
 export const settingsLabelContainerClass =
     "w-full flex flex-row items-center justify-between gap-4 min-h-[36px]";
+
+export const menuListItemClass = "flex items-center gap-2";

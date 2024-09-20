@@ -4,7 +4,7 @@ import { useStateStore } from "./lib/hooks";
 import Header from "./components/header";
 import { createTheme, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
-import { cls } from "./lib/utils";
+import { cls, menuListItemClass } from "./lib/utils";
 import Footer from "./components/footer";
 import FileList from "./components/sections/section-file-list";
 import ConferenceControls from "./components/sections/section-conference-controls";
@@ -16,8 +16,6 @@ const theme = createTheme({
     headings: { fontFamily: "Greycliff CF, sans-serif" },
 
     colors: {
-        //replace blue with the tailwind blue
-
         blue: [
             "#eff6ff",
             "#dbeafe",
@@ -31,6 +29,14 @@ const theme = createTheme({
             "#1e3a8a",
             "#172554",
         ],
+    },
+
+    components: {
+        Menu: {
+            classNames: {
+                itemLabel: menuListItemClass,
+            },
+        },
     },
 });
 
@@ -75,10 +81,7 @@ function App() {
 
                     <button
                         onClick={toggleA11y}
-                        className={cls(
-                            classes.a11yButton,
-                            allyOn ? classes.a11yButtonOn : "",
-                        )}
+                        className={`fixed bottom-4 right-4 cursor-pointer rounded-md border-none bg-gray-600 px-4 py-2 font-semibold text-white hover:bg-gray-700 ${allyOn ? "bg-green-600 hover:bg-green-700" : ""} `}
                     >
                         {allyOn ? "Disable" : "Enable"} A11y Features
                     </button>

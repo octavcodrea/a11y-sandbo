@@ -14,6 +14,8 @@ import {
 import { Menu, rem, Text } from "@mantine/core";
 import c from "../App.module.scss";
 
+import { File, FileAudio, FileVideo, Folder, Image } from "lucide-react";
+
 type SearchBarProps = {
     a11yOn?: boolean;
 };
@@ -79,14 +81,18 @@ const SearchBar = (props: SearchBarProps) => {
                             onChange={handleInputChange}
                         />
                         <button
-                            className={inputValue ? "" : "invisible"}
+                            className={
+                                inputValue ? "text-gray-400" : "invisible"
+                            }
                             onClick={() => setInputValue("")}
                             aria-label="Search"
                         >
                             <Search />
                         </button>
                         <button
-                            className={inputValue ? "" : "invisible"}
+                            className={
+                                inputValue ? "text-gray-400" : "invisible"
+                            }
                             onClick={() => setInputValue("")}
                             aria-label="Clear search"
                         >
@@ -98,7 +104,7 @@ const SearchBar = (props: SearchBarProps) => {
                 <Menu.Dropdown>
                     <Menu.Label>
                         <Text size="sm" style={{ marginBottom: rem(10) }}>
-                            Notifications
+                            Search results
                         </Text>
                     </Menu.Label>
                     <Menu.Item
@@ -106,7 +112,7 @@ const SearchBar = (props: SearchBarProps) => {
                             itemLabel: c.menuListItem,
                         }}
                     >
-                        <FilePlus2 /> New file uploaded
+                        <File /> File 1
                     </Menu.Item>
 
                     <Menu.Item
@@ -114,8 +120,8 @@ const SearchBar = (props: SearchBarProps) => {
                             itemLabel: c.menuListItem,
                         }}
                     >
-                        <Mail />
-                        New message received
+                        <Folder />
+                        Folder 1
                     </Menu.Item>
 
                     <Menu.Item
@@ -123,8 +129,8 @@ const SearchBar = (props: SearchBarProps) => {
                             itemLabel: c.menuListItem,
                         }}
                     >
-                        <Mail />
-                        New message received
+                        <Image />
+                        Image 1
                     </Menu.Item>
                 </Menu.Dropdown>
             </Menu>

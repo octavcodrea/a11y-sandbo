@@ -32,7 +32,8 @@ const FileList = () => {
         setFilesOpen(!filesOpen);
     };
 
-    const headerClass = "flex items-center justify-between mb-2 cursor-pointer";
+    const headerClass =
+        "flex items-center justify-between mb-4 cursor-pointer w-full";
     const titleClass = "text-xl font-bold text-gray-700";
     const listClass = "flex flex-col gap-2";
 
@@ -45,8 +46,9 @@ const FileList = () => {
             </p>
 
             <div className="flex flex-col gap-4">
-                <div className={c.fileList}>
-                    <div
+                <div className={"rounded-lg border border-gray-300 p-4"}>
+                    <SDiv
+                        tag={a11yOn ? "button" : undefined}
                         className={headerClass}
                         onClick={toggleFolders}
                         role={a11yOn ? "button" : undefined}
@@ -59,7 +61,7 @@ const FileList = () => {
                         ) : (
                             <ChevronDown className="text-gray-500" />
                         )}
-                    </div>
+                    </SDiv>
 
                     {foldersOpen && (
                         <SDiv
@@ -73,8 +75,9 @@ const FileList = () => {
                     )}
                 </div>
 
-                <div className={c.fileList}>
-                    <div
+                <div className={"rounded-lg border border-gray-300 p-4"}>
+                    <SDiv
+                        tag={a11yOn ? "button" : undefined}
                         className={headerClass}
                         onClick={toggleFiles}
                         role={a11yOn ? "button" : undefined}
@@ -87,7 +90,7 @@ const FileList = () => {
                         ) : (
                             <ChevronDown className="text-gray-500" />
                         )}
-                    </div>
+                    </SDiv>
 
                     {filesOpen && (
                         <SDiv
