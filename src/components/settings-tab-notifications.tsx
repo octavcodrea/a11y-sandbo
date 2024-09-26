@@ -26,7 +26,7 @@ const SettingsTabNotifications = () => {
     };
 
     return (
-        <div className={tabContentClass}>
+        <div className={tabContentClass} role={a11yOn ? "tabpanel" : undefined}>
             <h3 className="text-xl font-extrabold">Notifications</h3>
             <div className={settingsLabelContainerClass}>
                 <div className={settingsLabelContainerClass}>

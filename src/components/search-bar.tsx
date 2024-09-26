@@ -87,7 +87,7 @@ const SearchBar = (props: SearchBarProps) => {
                             onClick={() => setInputValue("")}
                             aria-label="Search"
                         >
-                            <Search />
+                            <Search className="text-gray-500" />
                         </button>
                         <button
                             className={
@@ -96,7 +96,7 @@ const SearchBar = (props: SearchBarProps) => {
                             onClick={() => setInputValue("")}
                             aria-label="Clear search"
                         >
-                            <X />
+                            <X className="text-gray-500" />
                         </button>
                     </SDiv>
                 </Menu.Target>
@@ -107,29 +107,17 @@ const SearchBar = (props: SearchBarProps) => {
                             Search results
                         </Text>
                     </Menu.Label>
-                    <Menu.Item
-                        classNames={{
-                            itemLabel: c.menuListItem,
-                        }}
-                    >
-                        <File /> File 1
+                    <Menu.Item>
+                        <File className="text-gray-500" /> File 1
                     </Menu.Item>
 
-                    <Menu.Item
-                        classNames={{
-                            itemLabel: c.menuListItem,
-                        }}
-                    >
-                        <Folder />
+                    <Menu.Item>
+                        <Folder className="text-gray-500" />
                         Folder 1
                     </Menu.Item>
 
-                    <Menu.Item
-                        classNames={{
-                            itemLabel: c.menuListItem,
-                        }}
-                    >
-                        <Image />
+                    <Menu.Item>
+                        <Image className="text-gray-500" />
                         Image 1
                     </Menu.Item>
                 </Menu.Dropdown>

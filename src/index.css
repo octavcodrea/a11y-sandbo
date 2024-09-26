@@ -22,16 +22,10 @@ body {
 
 button,
 .button {
-    background-color: transparent;
-    border: none;
-    color: inherit;
     cursor: pointer;
 
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    border-radius: 4px;
 }
 
 .aria-announcer {
@@ -44,4 +38,24 @@ button,
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+code {
+    background-color: #4b4b4b;
+    color: #f8f8f2;
+    padding: 0.2em 0.4em;
+    border-radius: 0.3em;
+    line-height: 2;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #dcdcdd;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9ba4b6;
 }

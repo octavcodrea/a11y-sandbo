@@ -1,0 +1,81 @@
+import { EmailCategoryObjectType, EmailExampleType } from "./types";
+import { Inbox, Info, Star, Tag, Users } from "lucide-react";
+
+export const emailCategories: EmailCategoryObjectType[] = [
+    { id: null, name: "All", icon: <Inbox /> },
+    { id: "promotions", name: "Promotions", icon: <Tag /> },
+    { id: "social", name: "Social", icon: <Users /> },
+    { id: "updates", name: "Updates", icon: <Info /> },
+];
+
+export const emailExamples: EmailExampleType[] = [
+    {
+        id: "1",
+        from: "John Doe",
+        fromEmail: "johndoe@placeholderemail.com",
+        subject: "Meeting with the team",
+        message: "Hi team, we have a meeting tomorrow at 10am.",
+        date: "2021-01-01",
+        favorite: true,
+        category: "promotions",
+    },
+    {
+        id: "2",
+        from: "Jane Doe",
+        fromEmail: "janedoe@placeholderemail.com",
+        subject: "Reminder",
+        message: "Don't forget to bring your laptop.",
+        date: "2021-01-02",
+        category: "promotions",
+        read: true,
+    },
+    {
+        id: "3",
+        from: "John Smith",
+        fromEmail: "johndoe@placeholderemail.com",
+        subject: "Update on the project",
+        message: "We are making great progress on the project.",
+        date: "2021-01-03",
+        favorite: false,
+    },
+    {
+        id: "4",
+        from: "Jane Smith",
+        fromEmail: "janesmith@placeholderemail.com",
+        subject: "Re: Meeting with the team",
+        message: "Looking forward to it!",
+        date: "2021-01-04",
+        category: "social",
+        read: true,
+    },
+    {
+        id: "5",
+        from: "John Doe",
+        fromEmail: "johndoe@placeholderemail.com",
+        subject: "Meeting",
+        message: "Hi team, we have a meeting tomorrow at 10am.",
+        date: "2021-01-01",
+        favorite: true,
+        category: "updates",
+    },
+    {
+        id: "6",
+        from: "Jane Doe",
+        fromEmail: "janedoe@placeholderemail.com",
+        subject: "Reminder",
+        message: "Don't forget to bring your laptop.",
+        date: "2021-01-02",
+        category: "updates",
+        read: true,
+    },
+    {
+        id: "7",
+        from: "John Smith",
+        fromEmail: "johnsm@placeholderemail.com",
+        subject: "Update",
+        message: "We are making great progress on the project.",
+        date: "2021-01-03",
+        favorite: false,
+        category: "social",
+    },
+];

@@ -20,7 +20,10 @@ const SettingsTabProfile = () => {
 
     return (
         <>
-            <div className={tabContentClass}>
+            <div
+                className={tabContentClass}
+                role={a11yOn ? "tabpanel" : undefined}
+            >
                 <h3 className="text-xl font-extrabold">Profile</h3>
                 <div className={settingsLabelContainerClass}>
                     <p className={labelClass}>First name</p>

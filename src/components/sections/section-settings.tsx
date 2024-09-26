@@ -3,6 +3,7 @@ import { useStateStore } from "../../lib/hooks";
 import SettingsTabProfile from "../settings-tab-profile";
 import SettingsTabNotifications from "../settings-tab-notifications";
 import SettingsTabGeneral from "../settings-tab-general";
+import SDiv from "../s-div";
 
 const tabs = ["Profile", "General", "Notifications"];
 
@@ -32,10 +33,13 @@ const Settings = () => {
     return (
         <div className="flex flex-col gap-4">
             <h3 className="text-3xl font-bold">Settings</h3>
-            <p>An example of a settings panel with tabs</p>
+            <p>An example of a settings panel with tabs.</p>
 
             <div className={containerClass}>
-                <div className={tabContainerClass}>
+                <SDiv
+                    className={tabContainerClass}
+                    tag={a11yOn ? "nav" : undefined}
+                >
                     {tabs.map((tab) => (
                         <button
                             key={tab}
@@ -53,7 +57,7 @@ const Settings = () => {
                             {tab}
                         </button>
                     ))}
-                </div>
+                </SDiv>
                 <div className={settingsContainerClass}>{activeTabContent}</div>
             </div>
         </div>
