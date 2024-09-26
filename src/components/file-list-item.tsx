@@ -1,9 +1,8 @@
 import { Menu } from "@mantine/core";
 import { Download, EllipsisVertical, Trash } from "lucide-react";
-import c from "../App.module.scss";
-import { getFileIcon, menuListItemClass } from "../lib/utils";
+import { useState } from "react";
+import { getFileIcon } from "../lib/utils";
 import SDiv from "./s-div";
-import { useRef, useState } from "react";
 
 export type FileItemType = "image" | "video" | "audio" | "document" | "folder";
 

@@ -1,7 +1,7 @@
-import { EmailExampleType } from "../lib/types";
+import { ArrowLeft, Trash } from "lucide-react";
 import profile2 from "../assets/profile2.jpg";
 import { useStateStore } from "../lib/hooks";
-import { ArrowLeft, Delete, Trash } from "lucide-react";
+import { EmailExampleType } from "../lib/types";
 
 type ViewEmailProps = {
     email: EmailExampleType;

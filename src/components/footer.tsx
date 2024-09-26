@@ -1,5 +1,4 @@
 import { useStateStore } from "../lib/hooks";
-import c from "../App.module.scss";
 import SDiv from "./s-div";
 
 const Footer = () => {
@@ -12,7 +11,6 @@ const Footer = () => {
         >
             <a href="/">Homepage</a>
             <a href="/about">About</a>
-            <a href="/contact">Contact</a>
         </SDiv>
     );
 };

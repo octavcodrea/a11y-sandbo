@@ -125,7 +125,7 @@ const FileList = () => {
                     aria-expanded={a11yOn ? info : undefined}
                 >
                     <Info className="h-5 w-5" /> {info ? "Hide" : "Show"} A11y
-                    info
+                    info - File manager
                 </button>
 
                 {info && (

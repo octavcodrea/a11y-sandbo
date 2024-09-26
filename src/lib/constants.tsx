@@ -1,5 +1,5 @@
+import { Inbox, Info, Tag, Users } from "lucide-react";
 import { EmailCategoryObjectType, EmailExampleType } from "./types";
-import { Inbox, Info, Star, Tag, Users } from "lucide-react";
 
 export const emailCategories: EmailCategoryObjectType[] = [
     { id: null, name: "All", icon: <Inbox /> },

@@ -5,15 +5,23 @@ type sDivProps = React.ComponentPropsWithoutRef<"div"> & {
     tag?: string;
 };
 
-//semantic div component - if a11y is on, add role and aria-label
+/**
+ * A functional component that renders a specified HTML tag with forwarded ref and additional props.
+ *
+ * @param children - The child elements to be rendered inside the component.
+ * @param tag - The HTML tag to be rendered. Defaults to "div".
+ * @param ref - The ref to be forwarded to the rendered element.
+ *
+ * @returns The specified HTML element with the provided children and props.
+ */
+
 const SDiv = forwardRef<HTMLDivElement, sDivProps>((props, ref) => {
-    const { children, tag = "div" } = props;
+    const { children, tag = "div", ...rest } = props;
 
     return React.createElement(
         tag,
         {
-            ...props,
-
+            ...rest,
             ref: ref,
         },
         children,

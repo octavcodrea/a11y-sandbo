@@ -21,8 +21,10 @@ const SettingsTabProfile = () => {
     return (
         <>
             <div
+                id="profile-tabpanel"
                 className={tabContentClass}
                 role={a11yOn ? "tabpanel" : undefined}
+                aria-labelledby="profile-tab"
             >
                 <h3 className="text-xl font-extrabold">Profile</h3>
                 <div className={settingsLabelContainerClass}>
@@ -75,6 +77,7 @@ const SettingsTabProfile = () => {
                     </h3>
                 }
                 centered
+                closeButtonProps={a11yOn ? { "aria-label": "Close modal" } : {}}
             >
                 <p>
                     Are you sure you want to delete your account? This action

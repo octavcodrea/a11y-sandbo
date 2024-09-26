@@ -1,20 +1,10 @@
+import { Menu, rem, Text } from "@mantine/core";
+import { Search, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { inputRootClass } from "../lib/utils";
 import SDiv from "./s-div";
-import {
-    Bell,
-    CircleHelp,
-    FilePlus2,
-    LogOut,
-    Mail,
-    Search,
-    Settings,
-    X,
-} from "lucide-react";
-import { Menu, rem, Text } from "@mantine/core";
-import c from "../App.module.scss";
 
-import { File, FileAudio, FileVideo, Folder, Image } from "lucide-react";
+import { File, Folder, Image } from "lucide-react";
 
 type SearchBarProps = {
     a11yOn?: boolean;

@@ -1,14 +1,10 @@
-import React, { useMemo, useState } from "react";
-import { useStateStore } from "../../lib/hooks";
 import { Checkbox, Tooltip } from "@mantine/core";
-import { Inbox, Info, Star, Tag, Users } from "lucide-react";
-import SDiv from "../s-div";
-import {
-    EmailCategoryObjectType,
-    EmailCategoryType,
-    EmailExampleType,
-} from "../../lib/types";
+import { Star } from "lucide-react";
+import React, { useMemo, useState } from "react";
 import { emailCategories, emailExamples } from "../../lib/constants";
+import { useStateStore } from "../../lib/hooks";
+import { EmailCategoryType, EmailExampleType } from "../../lib/types";
+import SDiv from "../s-div";
 import ViewEmail from "../view-email";
 
 const Emails = () => {
@@ -139,6 +135,9 @@ const Emails = () => {
                                                         email.id,
                                                     )
                                                 }
+                                                onClick={(e) =>
+                                                    e.stopPropagation()
+                                                }
                                             />
                                         </td>
                                         <td className="flex px-2">
@@ -167,7 +166,6 @@ const Emails = () => {
                                         <td className="flex max-w-[168px] flex-1">
                                             {email.from}
                                         </td>
-                                        {/* flex 1 1 auto */}
                                         <td className="flex flex-1 text-center">
                                             <SDiv
                                                 tag={

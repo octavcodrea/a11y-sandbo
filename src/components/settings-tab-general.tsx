@@ -9,7 +9,12 @@ const SettingsTabGeneral = () => {
     const labelClass = "font-semibold text-sm";
 
     return (
-        <div className={tabContentClass} role={a11yOn ? "tabpanel" : undefined}>
+        <div
+            id="general-tabpanel"
+            className={tabContentClass}
+            role={a11yOn ? "tabpanel" : undefined}
+            aria-labelledby="general-tab"
+        >
             <h3 className="text-xl font-extrabold">General</h3>
             <div className={settingsLabelContainerClass}>
                 <p className={labelClass}>First day of the week</p>

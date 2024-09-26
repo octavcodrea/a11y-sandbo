@@ -1,10 +1,6 @@
 import { Switch } from "@mantine/core";
 import { useStateStore } from "../lib/hooks";
-import {
-    inputRootClass,
-    settingsLabelContainerClass,
-    tabContentClass,
-} from "../lib/utils";
+import { settingsLabelContainerClass, tabContentClass } from "../lib/utils";
 
 const SettingsTabNotifications = () => {
     const { a11yOn, emailNotifications, pushNotifications } = useStateStore(
@@ -26,7 +22,12 @@ const SettingsTabNotifications = () => {
     };
 
     return (
-        <div className={tabContentClass} role={a11yOn ? "tabpanel" : undefined}>
+        <div
+            id="notifications-tabpanel"
+            className={tabContentClass}
+            role={a11yOn ? "tabpanel" : undefined}
+            aria-labelledby="notifications-tab"
+        >
             <h3 className="text-xl font-extrabold">Notifications</h3>
             <div className={settingsLabelContainerClass}>
                 <div className={settingsLabelContainerClass}>

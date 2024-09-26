@@ -7,14 +7,12 @@ import {
     Mail,
     Settings,
 } from "lucide-react";
-import c from "../App.module.scss";
 import logo from "../assets/logo.svg";
 import profilePic from "../assets/profile.jpg";
 import { useStateStore } from "../lib/hooks";
 import BreadcrumbsComponent from "./breadcrumbs";
 import SDiv from "./s-div";
 import SearchBar from "./search-bar";
-import { menuListItemClass } from "../lib/utils";
 
 const profileMenuItems = [
     { name: "Account settings", icon: Settings },
@@ -34,7 +32,9 @@ const Header = () => {
             role={a11yOn ? "banner" : undefined}
         >
             <div className="flex items-center gap-4">
-                <img src={logo} alt="Logo" className={logoClass} />
+                <a href="/">
+                    <img src={logo} alt="Logo" className={logoClass} />
+                </a>
 
                 <BreadcrumbsComponent />
             </div>
