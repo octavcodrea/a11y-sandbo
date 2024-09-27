@@ -30,3 +30,11 @@ export const settingsLabelContainerClass =
     "w-full flex flex-row items-center justify-between gap-4 min-h-[36px]";
 
 export const menuListItemClass = "flex items-center gap-2";
+
+export const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+    });
+};

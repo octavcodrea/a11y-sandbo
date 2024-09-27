@@ -11,7 +11,7 @@ const PageAbout = () => {
             >
                 App built by{" "}
                 <a
-                    className="text-blue-500 hover:underline"
+                    className="text-blue-600 hover:underline"
                     href="https://github.com/octavcodrea"
                     rel="noreferrer"
                     target="_blank"
@@ -22,7 +22,7 @@ const PageAbout = () => {
                 <br />
                 <br />
                 <a
-                    className="flex items-center justify-center gap-1 text-blue-500 hover:underline"
+                    className="flex items-center justify-center gap-1 text-blue-600 hover:underline"
                     href="/"
                 >
                     <ArrowLeft /> Home

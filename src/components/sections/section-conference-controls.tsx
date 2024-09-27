@@ -94,7 +94,7 @@ const ConferenceControls = () => {
 
     return (
         <div className="flex flex-col gap-5">
-            <h3 className="text-3xl font-bold">Conference controls</h3>
+            <h2 className="text-3xl font-bold">Conference controls</h2>
             <p>An example of a conference call control panel.</p>
 
             <div className="flex items-center justify-center gap-4">
@@ -159,7 +159,7 @@ const ConferenceControls = () => {
                             position="top"
                         >
                             <button
-                                className={`flex h-12 w-12 justify-center rounded-md ${screenShareOn ? "bg-blue-100 text-blue-500 hover:bg-blue-200" : "text-gray-600"}`}
+                                className={`flex h-12 w-12 justify-center rounded-md ${screenShareOn ? "bg-blue-100 text-blue-600 hover:bg-blue-200" : "text-gray-600"}`}
                                 aria-label={
                                     a11yOn
                                         ? `Start screen sharing, ${getGlobalKeybindString("toggleScreenShare")}`
@@ -176,7 +176,7 @@ const ConferenceControls = () => {
                             position="top"
                         >
                             <button
-                                className={`flex h-12 w-12 justify-center rounded-md ${handRaised ? "bg-blue-100 text-blue-500 hover:bg-blue-200" : "text-gray-600"}`}
+                                className={`flex h-12 w-12 justify-center rounded-md ${handRaised ? "bg-blue-100 text-blue-600 hover:bg-blue-200" : "text-gray-600"}`}
                                 aria-label={
                                     a11yOn
                                         ? `Toggle raise hand, ${getGlobalKeybindString("toggleRaiseHand")}`
@@ -231,7 +231,7 @@ const ConferenceControls = () => {
             <div className="mt-6 flex flex-col gap-4">
                 <button
                     onClick={toggleInfo}
-                    className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-500"
+                    className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-600"
                     aria-expanded={a11yOn ? info : undefined}
                 >
                     <Info className="h-5 w-5" /> {info ? "Hide" : "Show"} A11y

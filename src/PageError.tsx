@@ -12,7 +12,7 @@ const PageError = () => {
 
             <a
                 className={
-                    "text-lg font-semibold text-blue-500 hover:underline"
+                    "text-lg font-semibold text-blue-600 hover:underline"
                 }
                 href="/"
             >

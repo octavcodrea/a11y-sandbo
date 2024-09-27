@@ -45,7 +45,7 @@ const FileList = () => {
 
     return (
         <div className="flex flex-col gap-5">
-            <h3 className="text-3xl font-bold">File manager</h3>
+            <h2 className="text-3xl font-bold">File manager</h2>
             <p>
                 An example of a file manager, with accordion sections for
                 folders and files.
@@ -122,7 +122,7 @@ const FileList = () => {
             <div className="mt-6 flex flex-col gap-4">
                 <button
                     onClick={toggleInfo}
-                    className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-500"
+                    className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-600"
                     aria-expanded={a11yOn ? info : undefined}
                 >
                     <Info className="h-5 w-5" /> {info ? "Hide" : "Show"} A11y

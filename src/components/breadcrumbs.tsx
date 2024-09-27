@@ -14,7 +14,7 @@ const Breadcrumbs = () => {
                 href={item.href}
                 key={index}
                 className={`${
-                    index < 2 ? "text-gray-500" : "font-bold text-blue-500"
+                    index < 2 ? "text-gray-500" : "font-bold text-blue-600"
                 }`}
                 aria-current={
                     a11yOn ? (index === 2 ? "page" : undefined) : undefined

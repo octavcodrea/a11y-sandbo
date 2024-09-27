@@ -6,6 +6,7 @@ import { useStateStore } from "../../lib/hooks";
 import { EmailCategoryType, EmailExampleType } from "../../lib/types";
 import SDiv from "../s-div";
 import ViewEmail from "../view-email";
+import { formatDate } from "../../lib/utils";
 
 const Emails = () => {
     const a11yOn = useStateStore((state) => state.a11yOn);
@@ -70,7 +71,7 @@ const Emails = () => {
 
     return (
         <div className="flex flex-col gap-4">
-            <h3 className="text-3xl font-bold">Emails</h3>
+            <h2 className="text-3xl font-bold">Emails</h2>
             <p>An example of an email client, with a list of emails.</p>
 
             <div className="flex min-h-[500px] flex-col gap-4 rounded-md border border-gray-200 p-2">
@@ -138,6 +139,11 @@ const Emails = () => {
                                                 onClick={(e) =>
                                                     e.stopPropagation()
                                                 }
+                                                aria-label={
+                                                    a11yOn
+                                                        ? `Select email ${email.subject}`
+                                                        : undefined
+                                                }
                                             />
                                         </td>
                                         <td className="flex px-2">
@@ -148,11 +154,12 @@ const Emails = () => {
                                                             ? "button"
                                                             : undefined
                                                     }
-                                                    onClick={() =>
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
                                                         handleToggleFavorite(
                                                             email.id,
-                                                        )
-                                                    }
+                                                        );
+                                                    }}
                                                     className="cursor-pointer"
                                                     aria-label={`${a11yOn ? (email.favorite ? "Favorite" : "Not favorite") : ""}`}
                                                 >
@@ -179,7 +186,7 @@ const Emails = () => {
                                             </SDiv>
                                         </td>
                                         <td className="flex px-4 text-right">
-                                            {email.date}
+                                            {formatDate(email.date)}
                                         </td>
                                     </tr>
                                 ))}

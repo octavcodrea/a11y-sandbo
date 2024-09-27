@@ -65,6 +65,7 @@ const SearchBar = (props: SearchBarProps) => {
                         role={a11yOn ? "search" : undefined}
                     >
                         <input
+                            aria-label={a11yOn ? "Search" : undefined}
                             placeholder="Search"
                             className="border-none outline-none"
                             value={inputValue}
