@@ -66,7 +66,7 @@ const SearchBar = (props: SearchBarProps) => {
                     >
                         <input
                             aria-label={a11yOn ? "Search" : undefined}
-                            placeholder="Search"
+                            placeholder="Search for files"
                             className="border-none outline-none"
                             value={inputValue}
                             onChange={handleInputChange}
