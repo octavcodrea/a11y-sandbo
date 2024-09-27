@@ -18,7 +18,7 @@ interface StateStore {
 }
 
 export const useStateStore = create<StateStore>((set) => ({
-    a11yOn: false,
+    a11yOn: localStorage.getItem("a11yOn") === "true" || false,
     overlay: false,
 
     firstName: "John",

@@ -4,6 +4,7 @@ import FileListItem, { FileListItemType } from "../file-list-item";
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Info } from "lucide-react";
 import SDiv from "../s-div";
+import Code from "../code";
 
 const folders: FileListItemType[] = [
     { title: "Folder 1", type: "folder" },
@@ -129,23 +130,23 @@ const FileList = () => {
                 </button>
 
                 {info && (
-                    <p aria-hidden>
-                        In this example, <code>aria-expanded</code> is used to
+                    <p>
+                        In this example, <Code>aria-expanded</Code> is used to
                         indicate whether the section is open or closed. The
                         sections can be toggled by clicking on the headers.
                         <br />
                         <br />
                         To make the headers focusable, they are wrapped in a{" "}
-                        <code>button</code> element when accessibility features
+                        <Code>button</Code> element when accessibility features
                         are enabled.
                         <br />
                         <br />
-                        The elements are wrapped in an <code>ul</code> element
+                        The elements are wrapped in an <Code>ul</Code> element
                         to indicate that they are a list.
                         <br />
                         Icon buttons that toggle the options for each item are
-                        labeled with <code>aria-label</code>, and use{" "}
-                        <code>aria-expanded</code> to indicate whether the
+                        labeled with <Code>aria-label</Code>, and use{" "}
+                        <Code>aria-expanded</Code> to indicate whether the
                         options are open or closed.
                     </p>
                 )}

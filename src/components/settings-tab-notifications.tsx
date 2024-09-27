@@ -28,7 +28,7 @@ const SettingsTabNotifications = () => {
             role={a11yOn ? "tabpanel" : undefined}
             aria-labelledby="notifications-tab"
         >
-            <h3 className="text-xl font-extrabold">Notifications</h3>
+            <h3 className="text-xl font-bold">Notifications</h3>
             <div className={settingsLabelContainerClass}>
                 <div className={settingsLabelContainerClass}>
                     <p className={labelClass}>Email notifications</p>

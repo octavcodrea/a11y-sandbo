@@ -26,7 +26,7 @@ const SettingsTabProfile = () => {
                 role={a11yOn ? "tabpanel" : undefined}
                 aria-labelledby="profile-tab"
             >
-                <h3 className="text-xl font-extrabold">Profile</h3>
+                <h3 className="text-xl font-bold">Profile</h3>
                 <div className={settingsLabelContainerClass}>
                     <p className={labelClass}>First name</p>
                     <div className={inputRootClass}>

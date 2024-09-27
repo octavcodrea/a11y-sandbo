@@ -16,6 +16,7 @@ import { MicOff } from "lucide-react";
 import { VideoOff } from "lucide-react";
 import { Tooltip } from "@mantine/core";
 import { getGlobalKeybindString } from "../../lib/keybinds";
+import Code from "../code";
 
 const ConferenceControls = () => {
     const { a11yOn, microphoneOn, cameraOn, handRaised } = useStateStore(
@@ -244,18 +245,19 @@ const ConferenceControls = () => {
                         color and icon changes.
                         <br />
                         <br />
-                        To communicate purpose, each button has an{" "}
-                        <code>aria-label</code> attribute that describes its
-                        function, along with the keybind to activate it.
+                        To communicate purpose to users with visual impairments,
+                        each button has an <Code>aria-label</Code> attribute
+                        that describes its function, along with the keybind to
+                        activate it.
                         <br />
                         To communicate state to screen readers, a{" "}
-                        <code>{"div"}</code> with{" "}
-                        <code>aria-live="assertive"</code> and{" "}
-                        <code>aria-atomic="true"</code> is used to announce
+                        <Code>{"div"}</Code> with{" "}
+                        <Code>aria-live="assertive"</Code> and{" "}
+                        <Code>aria-atomic="true"</Code> is used to announce
                         changes in the state of the conference controls.
                         <br />
                         Each time a control is toggled, the content of the{" "}
-                        <code>{"div"}</code> is updated to announce the change.
+                        <Code>{"div"}</Code> is updated to announce the change.
                         <br />
                         Screen readers will announce the last change made to the
                         state of the controls.

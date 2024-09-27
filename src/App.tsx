@@ -20,23 +20,31 @@ function App() {
         useStateStore.setState((state) => ({
             a11yOn: !state.a11yOn,
         }));
+        localStorage.setItem("a11yOn", String(!allyOn));
     };
 
     return (
         <>
-            <button
-                onClick={toggleA11y}
-                className={`fixed bottom-4 left-4 z-50 cursor-pointer rounded-md border-none px-4 py-2 font-semibold text-white ${allyOn ? "bg-green-600 hover:bg-green-700" : "z-50 bg-gray-600 hover:bg-gray-700"}`}
+            <div
+                className={cls(
+                    "fixed bottom-4 left-4 z-50 flex flex-col gap-2",
+                    classes.controls,
+                )}
             >
-                {allyOn ? "Disable" : "Enable"} A11y Features
-            </button>
+                <button
+                    onClick={toggleA11y}
+                    className={`w-fit cursor-pointer rounded-md border-none px-4 py-2 font-semibold text-white outline-8 outline-offset-2 outline-orange-400 ${allyOn ? "bg-blue-600 hover:bg-blue-700" : "z-50 bg-gray-600 hover:bg-gray-700"}`}
+                >
+                    {allyOn ? "Disable" : "Enable"} A11y Features
+                </button>
 
-            <button
-                onClick={toggleOverlay}
-                className={`fixed bottom-16 left-4 z-50 cursor-pointer rounded-md border-none px-4 py-2 font-semibold text-white ${overlay ? "bg-green-600 hover:bg-green-700" : "z-50 bg-gray-600 hover:bg-gray-700"}`}
-            >
-                Toggle overlay
-            </button>
+                <button
+                    onClick={toggleOverlay}
+                    className={`w-fit cursor-pointer rounded-md border-none px-4 py-2 font-semibold text-white outline-8 outline-offset-2 outline-orange-400 ${overlay ? "bg-blue-600 hover:bg-blue-700" : "z-50 bg-gray-600 hover:bg-gray-700"}`}
+                >
+                    Toggle overlay
+                </button>
+            </div>
 
             <div
                 className={cls(

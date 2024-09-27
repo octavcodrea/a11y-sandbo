@@ -1,3 +1,5 @@
+import { ArrowLeft } from "lucide-react";
+
 const PageAbout = () => {
     return (
         <div className="flex h-screen flex-col items-center justify-center gap-4">
@@ -10,15 +12,20 @@ const PageAbout = () => {
                 App built by{" "}
                 <a
                     className="text-blue-500 hover:underline"
-                    href="github.com/octavcodrea"
+                    href="https://github.com/octavcodrea"
+                    rel="noreferrer"
+                    target="_blank"
                 >
                     Octav Codrea
                 </a>
                 .
                 <br />
                 <br />
-                <a className="text-blue-500 hover:underline" href="/">
-                    Go back home
+                <a
+                    className="flex items-center justify-center gap-1 text-blue-500 hover:underline"
+                    href="/"
+                >
+                    <ArrowLeft /> Home
                 </a>
             </div>
         </div>

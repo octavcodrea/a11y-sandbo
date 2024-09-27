@@ -5,6 +5,7 @@ import SettingsTabNotifications from "../settings-tab-notifications";
 import SettingsTabGeneral from "../settings-tab-general";
 import SDiv from "../s-div";
 import { Info } from "lucide-react";
+import Code from "../code";
 
 const tabs = [
     { name: "Profile", id: "profile-tab", controls: "profile-tabpanel" },
@@ -97,9 +98,9 @@ const Settings = () => {
                 {info && (
                     <p>
                         Here, the container element has a role of{" "}
-                        <code>tablist</code> and an <code>aria-label</code> of
+                        <Code>tablist</Code> and an <Code>aria-label</Code> of
                         "Settings tabs". Each tab button has a role of{" "}
-                        <code>tab</code> and an <code>aria-selected</code>{" "}
+                        <Code>tab</Code> and an <Code>aria-selected</Code>{" "}
                         attribute that reflects the current active tab.
                     </p>
                 )}
