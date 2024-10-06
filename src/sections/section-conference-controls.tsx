@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStateStore } from "../../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 
 import {
     Expand,
@@ -15,13 +15,17 @@ import { Video } from "lucide-react";
 import { MicOff } from "lucide-react";
 import { VideoOff } from "lucide-react";
 import { Tooltip } from "@mantine/core";
-import { getGlobalKeybindString } from "../../lib/keybinds";
-import Code from "../code";
+import { getGlobalKeybindString } from "../lib/keybinds";
+import Code from "../components/code";
 
 const ConferenceControls = () => {
     const { a11yOn, microphoneOn, cameraOn, handRaised } = useStateStore(
         (state) => state,
     );
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
 
     const [info, setInfo] = useState(false);
 
@@ -118,6 +122,7 @@ const ConferenceControls = () => {
                                             : `Unmute microphone, ${getGlobalKeybindString("toggleAudio")}`
                                         : undefined
                                 }
+                                {...hoverProps}
                             >
                                 {microphoneOn ? (
                                     <Mic size={32} />
@@ -145,6 +150,7 @@ const ConferenceControls = () => {
                                             : `Turn on camera, ${getGlobalKeybindString("toggleVideo")}`
                                         : undefined
                                 }
+                                {...hoverProps}
                             >
                                 {cameraOn ? (
                                     <Video size={32} />
@@ -166,6 +172,7 @@ const ConferenceControls = () => {
                                         : undefined
                                 }
                                 onClick={handleToggleScreenShare}
+                                {...hoverProps}
                             >
                                 <MonitorUp size={32} />
                             </button>
@@ -183,6 +190,7 @@ const ConferenceControls = () => {
                                         : undefined
                                 }
                                 onClick={handleToggleHand}
+                                {...hoverProps}
                             >
                                 {handRaised ? (
                                     <Hand size={32} />
@@ -197,6 +205,7 @@ const ConferenceControls = () => {
                                 className="flex h-12 w-12 justify-center rounded-md text-gray-600"
                                 aria-label={a11yOn ? "Full screen" : undefined}
                                 onClick={handleToggleFullScreen}
+                                {...hoverProps}
                             >
                                 {fullScreenOn ? (
                                     <Shrink size={32} />
@@ -210,6 +219,7 @@ const ConferenceControls = () => {
                             <button
                                 className="flex h-12 w-12 justify-center rounded-md bg-red-100 text-red-500 hover:bg-red-200"
                                 aria-label={a11yOn ? "Leave call" : undefined}
+                                {...hoverProps}
                             >
                                 <PhoneOff size={32} />
                             </button>
@@ -233,6 +243,7 @@ const ConferenceControls = () => {
                     onClick={toggleInfo}
                     className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-600"
                     aria-expanded={a11yOn ? info : undefined}
+                    {...hoverProps}
                 >
                     <Info className="h-5 w-5" /> {info ? "Hide" : "Show"} A11y
                     info - Conference controls

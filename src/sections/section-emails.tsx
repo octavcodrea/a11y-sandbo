@@ -1,15 +1,19 @@
 import { Checkbox, Tooltip } from "@mantine/core";
 import { Star } from "lucide-react";
 import React, { useMemo, useState } from "react";
-import { emailCategories, emailExamples } from "../../lib/constants";
-import { useStateStore } from "../../lib/hooks";
-import { EmailCategoryType, EmailExampleType } from "../../lib/types";
-import SDiv from "../s-div";
-import ViewEmail from "../view-email";
-import { formatDate } from "../../lib/utils";
+import { emailCategories, emailExamples } from "../lib/constants";
+import { useHoverData, useStateStore } from "../lib/hooks";
+import { EmailCategoryType, EmailExampleType } from "../lib/types";
+import SDiv from "../components/s-div";
+import ViewEmail from "../components/view-email";
+import { formatDate } from "../lib/utils";
 
 const Emails = () => {
     const a11yOn = useStateStore((state) => state.a11yOn);
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
 
     const [selectedCategory, setSelectedCategory] =
         useState<EmailCategoryType | null>(null);
@@ -94,6 +98,12 @@ const Emails = () => {
                                             ? "bg-blue-100 font-semibold text-blue-600"
                                             : "bg-gray-100"
                                     } rounded-md p-2`}
+                                    aria-selected={
+                                        a11yOn
+                                            ? selectedCategory === category.id
+                                            : undefined
+                                    }
+                                    {...hoverProps}
                                 >
                                     {ThisIcon}
                                     {category.name}
@@ -123,7 +133,7 @@ const Emails = () => {
                                 {filteredEmails.map((email) => (
                                     <tr
                                         key={email.id}
-                                        className={` ${email.read ? "bg-gray-100" : "font-semibold"} relative flex w-full cursor-pointer py-2`}
+                                        className={` ${email.read ? "bg-gray-100" : "font-semibold"} relative flex w-full cursor-pointer items-center py-2`}
                                         onClick={() => setViewingEmail(email)}
                                     >
                                         <td className="flex px-2">
@@ -144,6 +154,7 @@ const Emails = () => {
                                                         ? `Select email ${email.subject}`
                                                         : undefined
                                                 }
+                                                {...hoverProps}
                                             />
                                         </td>
                                         <td className="flex px-2">
@@ -162,6 +173,7 @@ const Emails = () => {
                                                     }}
                                                     className="cursor-pointer"
                                                     aria-label={`${a11yOn ? (email.favorite ? "Favorite" : "Not favorite") : ""}`}
+                                                    {...hoverProps}
                                                 >
                                                     <Star
                                                         className={`${email.favorite ? "fill-yellow-500 stroke-yellow-500" : "stroke-gray-400"} `}
@@ -181,6 +193,7 @@ const Emails = () => {
                                                         : undefined
                                                 }
                                                 className="flex flex-1"
+                                                {...hoverProps}
                                             >
                                                 {email.subject}
                                             </SDiv>

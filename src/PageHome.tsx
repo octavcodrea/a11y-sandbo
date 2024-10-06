@@ -2,11 +2,11 @@ import "@mantine/core/styles.css";
 import classes from "./App.module.scss";
 import Header from "./components/header";
 import SDiv from "./components/s-div";
-import ConferenceControls from "./components/sections/section-conference-controls";
-import Emails from "./components/sections/section-emails";
-import FileList from "./components/sections/section-file-list";
-import Settings from "./components/sections/section-settings";
-import { useStateStore } from "./lib/hooks";
+import ConferenceControls from "./sections/section-conference-controls";
+import Emails from "./sections/section-emails";
+import FileList from "./sections/section-file-list";
+import Settings from "./sections/section-settings";
+import { useHoverData, useStateStore } from "./lib/hooks";
 import { cls } from "./lib/utils";
 import { useState } from "react";
 import { Info } from "lucide-react";
@@ -14,6 +14,11 @@ import Code from "./components/code";
 
 const PageHome = () => {
     const a11yOn = useStateStore((state) => state.a11yOn);
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
+
     const [info, setInfo] = useState(false);
 
     const toggleInfo = () => {
@@ -61,6 +66,7 @@ const PageHome = () => {
                             onClick={toggleInfo}
                             className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-600"
                             aria-expanded={a11yOn ? info : undefined}
+                            {...hoverProps}
                         >
                             <Info className="h-5 w-5" />{" "}
                             {info ? "Hide" : "Show"} A11y info - Header

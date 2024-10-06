@@ -3,12 +3,14 @@ import { Outlet } from "react-router-dom";
 import classes from "./App.module.scss";
 import Footer from "./components/footer";
 import KeyboardEventsHandler from "./components/keyboard-events-handler";
-import { useStateStore } from "./lib/hooks";
+import { useHoverData, useStateStore } from "./lib/hooks";
 import { cls } from "./lib/utils";
 
 function App() {
     const allyOn = useStateStore((state) => state.a11yOn);
     const overlay = useStateStore((state) => state.overlay);
+
+    const { renderedHoverData } = useHoverData();
 
     const toggleOverlay = () => {
         useStateStore.setState((state) => ({
@@ -57,6 +59,8 @@ function App() {
             <Footer />
 
             <KeyboardEventsHandler />
+
+            {renderedHoverData}
         </>
     );
 }

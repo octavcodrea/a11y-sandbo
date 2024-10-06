@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import logo from "../assets/logo.svg";
 import profilePic from "../assets/profile.jpg";
-import { useStateStore } from "../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 import BreadcrumbsComponent from "./breadcrumbs";
 import SDiv from "./s-div";
 import SearchBar from "./search-bar";
@@ -23,6 +23,10 @@ const profileMenuItems = [
 const Header = () => {
     const a11yOn = useStateStore((state) => state.a11yOn);
 
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
+
     const logoClass = "h-auto w-16";
 
     return (
@@ -30,10 +34,20 @@ const Header = () => {
             className={`flex items-center justify-between gap-4 bg-white p-4 shadow-md`}
             tag={a11yOn ? "header" : undefined}
             role={a11yOn ? "banner" : undefined}
+            {...hoverProps}
         >
             <div className="flex items-center gap-4">
-                <a href="/">
-                    <img src={logo} alt="Logo" className={logoClass} />
+                <a
+                    href="/"
+                    {...hoverProps}
+                    aria-label={a11yOn ? "Home" : undefined}
+                >
+                    <img
+                        src={logo}
+                        role={a11yOn ? "img" : undefined}
+                        alt=""
+                        className={logoClass}
+                    />
                 </a>
 
                 <BreadcrumbsComponent />
@@ -50,6 +64,7 @@ const Header = () => {
                             className={
                                 "text-color-gray-700 h-10 w-10 cursor-pointer rounded-md p-2 hover:bg-gray-100 active:bg-gray-200"
                             }
+                            {...hoverProps}
                         >
                             <Bell className="h-full w-full text-gray-500" />
                         </SDiv>
@@ -61,17 +76,17 @@ const Header = () => {
                                 Notifications
                             </Text>
                         </Menu.Label>
-                        <Menu.Item>
+                        <Menu.Item {...hoverProps}>
                             <FilePlus2 className="text-gray-500" /> New file
                             uploaded
                         </Menu.Item>
 
-                        <Menu.Item>
+                        <Menu.Item {...hoverProps}>
                             <Mail className="text-gray-500" />
                             New message received
                         </Menu.Item>
 
-                        <Menu.Item>
+                        <Menu.Item {...hoverProps}>
                             <Mail className="text-gray-500" />
                             New message received
                         </Menu.Item>
@@ -86,6 +101,7 @@ const Header = () => {
                             className={
                                 "h-12 w-12 cursor-pointer overflow-hidden rounded-full p-0"
                             }
+                            {...hoverProps}
                         >
                             <img
                                 className="h-full w-auto object-cover"
@@ -98,7 +114,10 @@ const Header = () => {
 
                     <Menu.Dropdown>
                         {profileMenuItems.map((item, index) => (
-                            <Menu.Item key={index}>
+                            <Menu.Item
+                                key={`profile-menu-item-${index}`}
+                                {...hoverProps}
+                            >
                                 <item.icon className="text-gray-500" />
                                 {item.name}
                             </Menu.Item>

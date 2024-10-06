@@ -1,8 +1,12 @@
-import { useStateStore } from "../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 import SDiv from "./s-div";
 
 const Breadcrumbs = () => {
     const a11yOn = useStateStore((state) => state.a11yOn);
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
 
     const items = [
         { title: "A11y Sandbox", href: "#" },
@@ -11,14 +15,15 @@ const Breadcrumbs = () => {
     ].map((item, index) => (
         <>
             <a
+                key={`breadcrumb-${index}`}
                 href={item.href}
-                key={index}
                 className={`${
                     index < 2 ? "text-gray-500" : "font-bold text-blue-600"
                 }`}
                 aria-current={
                     a11yOn ? (index === 2 ? "page" : undefined) : undefined
                 }
+                {...hoverProps}
             >
                 {item.title}
             </a>

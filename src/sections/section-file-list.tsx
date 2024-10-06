@@ -1,10 +1,10 @@
-import { useStateStore } from "../../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 import c from "../../App.module.scss";
-import FileListItem, { FileListItemType } from "../file-list-item";
+import FileListItem, { FileListItemType } from "../components/file-list-item";
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Info } from "lucide-react";
-import SDiv from "../s-div";
-import Code from "../code";
+import SDiv from "../components/s-div";
+import Code from "../components/code";
 
 const folders: FileListItemType[] = [
     { title: "Folder 1", type: "folder" },
@@ -21,6 +21,11 @@ const files: FileListItemType[] = [
 
 const FileList = () => {
     const a11yOn = useStateStore((state) => state.a11yOn);
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
+
     const [info, setInfo] = useState(false);
 
     const [foldersOpen, setFoldersOpen] = useState(false);
@@ -61,8 +66,8 @@ const FileList = () => {
                         tag={a11yOn ? "button" : undefined}
                         className={headerClass}
                         onClick={toggleFolders}
-                        role={a11yOn ? "button" : undefined}
                         aria-expanded={a11yOn ? foldersOpen : undefined}
+                        {...hoverProps}
                     >
                         <h3 className={titleClass}>Folders</h3>
 
@@ -77,9 +82,14 @@ const FileList = () => {
                         <SDiv
                             tag={a11yOn ? "ul" : undefined}
                             className={listClass}
+                            {...hoverProps}
                         >
                             {folders.map((file, index) => (
-                                <FileListItem key={index} {...file} a11yOn />
+                                <FileListItem
+                                    key={index}
+                                    {...file}
+                                    a11yOn={a11yOn}
+                                />
                             ))}
                         </SDiv>
                     )}
@@ -94,8 +104,8 @@ const FileList = () => {
                         tag={a11yOn ? "button" : undefined}
                         className={headerClass}
                         onClick={toggleFiles}
-                        role={a11yOn ? "button" : undefined}
                         aria-expanded={a11yOn ? filesOpen : undefined}
+                        {...hoverProps}
                     >
                         <h3 className={titleClass}>Files</h3>
 
@@ -112,7 +122,11 @@ const FileList = () => {
                             className={listClass}
                         >
                             {files.map((file, index) => (
-                                <FileListItem key={index} {...file} a11yOn />
+                                <FileListItem
+                                    key={index}
+                                    {...file}
+                                    a11yOn={a11yOn}
+                                />
                             ))}
                         </SDiv>
                     )}
@@ -124,6 +138,7 @@ const FileList = () => {
                     onClick={toggleInfo}
                     className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-600"
                     aria-expanded={a11yOn ? info : undefined}
+                    {...hoverProps}
                 >
                     <Info className="h-5 w-5" /> {info ? "Hide" : "Show"} A11y
                     info - File manager

@@ -1,6 +1,6 @@
 import { ArrowLeft, Trash } from "lucide-react";
 import profile2 from "../assets/profile2.jpg";
-import { useStateStore } from "../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 import { EmailExampleType } from "../lib/types";
 
 type ViewEmailProps = {
@@ -12,6 +12,10 @@ type ViewEmailProps = {
 const ViewEmail = (props: ViewEmailProps) => {
     const a11yOn = useStateStore((state) => state.a11yOn);
 
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
+
     const { email, setViewingEmail } = props;
 
     return (
@@ -21,6 +25,7 @@ const ViewEmail = (props: ViewEmailProps) => {
                     <button
                         className="flex items-center gap-2 rounded-md border border-gray-200 px-3 py-1 text-gray-700"
                         onClick={() => setViewingEmail(null)}
+                        {...hoverProps}
                     >
                         <ArrowLeft className="h-4 w-4" />
                         <span className="font-semibold">Back</span>
@@ -28,6 +33,7 @@ const ViewEmail = (props: ViewEmailProps) => {
                     <button
                         className="text-gray-500"
                         aria-label={a11yOn ? "Delete email" : undefined}
+                        {...hoverProps}
                     >
                         <Trash />
                     </button>

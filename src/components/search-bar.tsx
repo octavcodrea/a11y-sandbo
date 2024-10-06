@@ -1,10 +1,11 @@
 import { Menu, rem, Text } from "@mantine/core";
 import { Search, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import { inputRootClass } from "../lib/utils";
+import { cls, inputRootClass } from "../lib/utils";
 import SDiv from "./s-div";
 
 import { File, Folder, Image } from "lucide-react";
+import { useHoverData } from "../lib/hooks";
 
 type SearchBarProps = {
     a11yOn?: boolean;
@@ -13,9 +14,14 @@ type SearchBarProps = {
 const SearchBar = (props: SearchBarProps) => {
     const { a11yOn } = props;
 
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
+
     const [inputValue, setInputValue] = useState("");
     const [searchResultsOpen, setSearchResultsOpen] = useState(false);
     const [lastAnnouncement, setLastAnnouncement] = useState("");
+    const [inputFocused, setInputFocused] = useState(false);
 
     const [openSearchTimer, setOpenSearchTimer] =
         useState<NodeJS.Timeout | null>(null);
@@ -60,9 +66,13 @@ const SearchBar = (props: SearchBarProps) => {
             >
                 <Menu.Target>
                     <SDiv
-                        className={inputRootClass}
+                        className={cls(
+                            inputRootClass,
+                            inputFocused ? "shadow-md" : "",
+                        )}
                         tag={a11yOn ? "form" : undefined}
                         role={a11yOn ? "search" : undefined}
+                        {...hoverProps}
                     >
                         <input
                             aria-label={a11yOn ? "Search" : undefined}
@@ -70,13 +80,17 @@ const SearchBar = (props: SearchBarProps) => {
                             className="border-none outline-none"
                             value={inputValue}
                             onChange={handleInputChange}
+                            onFocus={() => setInputFocused(true)}
+                            onBlur={() => setInputFocused(false)}
+                            {...hoverProps}
                         />
                         <button
                             className={
                                 inputValue ? "text-gray-400" : "invisible"
                             }
                             onClick={() => setInputValue("")}
-                            aria-label="Search"
+                            aria-label={a11yOn ? "Search" : undefined}
+                            {...hoverProps}
                         >
                             <Search className="text-gray-500" />
                         </button>
@@ -85,7 +99,8 @@ const SearchBar = (props: SearchBarProps) => {
                                 inputValue ? "text-gray-400" : "invisible"
                             }
                             onClick={() => setInputValue("")}
-                            aria-label="Clear search"
+                            aria-label={a11yOn ? "Clear search" : undefined}
+                            {...hoverProps}
                         >
                             <X className="text-gray-500" />
                         </button>
@@ -98,16 +113,16 @@ const SearchBar = (props: SearchBarProps) => {
                             Search results
                         </Text>
                     </Menu.Label>
-                    <Menu.Item>
+                    <Menu.Item {...hoverProps}>
                         <File className="text-gray-500" /> File 1
                     </Menu.Item>
 
-                    <Menu.Item>
+                    <Menu.Item {...hoverProps}>
                         <Folder className="text-gray-500" />
                         Folder 1
                     </Menu.Item>
 
-                    <Menu.Item>
+                    <Menu.Item {...hoverProps}>
                         <Image className="text-gray-500" />
                         Image 1
                     </Menu.Item>

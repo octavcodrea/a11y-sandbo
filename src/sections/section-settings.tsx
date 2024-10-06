@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import { useStateStore } from "../../lib/hooks";
-import SettingsTabProfile from "../settings-tab-profile";
-import SettingsTabNotifications from "../settings-tab-notifications";
-import SettingsTabGeneral from "../settings-tab-general";
-import SDiv from "../s-div";
+import { useHoverData, useStateStore } from "../lib/hooks";
+import SettingsTabProfile from "../components/settings-tab-profile";
+import SettingsTabNotifications from "../components/settings-tab-notifications";
+import SettingsTabGeneral from "../components/settings-tab-general";
+import SDiv from "../components/s-div";
 import { Info } from "lucide-react";
-import Code from "../code";
+import Code from "../components/code";
 
 const tabs = [
     { name: "Profile", id: "profile-tab", controls: "profile-tabpanel" },
@@ -23,6 +23,10 @@ const tabs = [
 
 const Settings = () => {
     const a11yOn = useStateStore((state) => state.a11yOn);
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
 
     const [info, setInfo] = useState(false);
 
@@ -77,6 +81,7 @@ const Settings = () => {
                                 a11yOn ? activeTab === tab.name : undefined
                             }
                             aria-controls={a11yOn ? tab.controls : undefined}
+                            {...hoverProps}
                         >
                             {tab.name}
                         </button>
@@ -90,6 +95,7 @@ const Settings = () => {
                     onClick={toggleInfo}
                     className="mr-auto flex items-center gap-2 px-2 font-semibold text-blue-600"
                     aria-expanded={a11yOn ? info : undefined}
+                    {...hoverProps}
                 >
                     <Info className="h-5 w-5" /> {info ? "Hide" : "Show"} A11y
                     info - Settings

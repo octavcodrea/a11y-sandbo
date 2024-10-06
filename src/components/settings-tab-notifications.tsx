@@ -1,11 +1,15 @@
 import { Switch } from "@mantine/core";
-import { useStateStore } from "../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 import { settingsLabelContainerClass, tabContentClass } from "../lib/utils";
 
 const SettingsTabNotifications = () => {
     const { a11yOn, emailNotifications, pushNotifications } = useStateStore(
         (state) => state,
     );
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
 
     const labelClass = "font-semibold text-sm";
 
@@ -35,6 +39,7 @@ const SettingsTabNotifications = () => {
                     <Switch
                         checked={emailNotifications}
                         onChange={handleEmailNotificationsChange}
+                        wrapperProps={hoverProps}
                     />
                 </div>
             </div>
@@ -45,6 +50,7 @@ const SettingsTabNotifications = () => {
                     <Switch
                         checked={pushNotifications}
                         onChange={handlePushNotificationsChange}
+                        wrapperProps={hoverProps}
                     />
                 </div>
             </div>

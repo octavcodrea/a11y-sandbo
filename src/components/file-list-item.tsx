@@ -3,6 +3,7 @@ import { Download, EllipsisVertical, Trash } from "lucide-react";
 import { useState } from "react";
 import { getFileIcon } from "../lib/utils";
 import SDiv from "./s-div";
+import { useHoverData } from "../lib/hooks";
 
 export type FileItemType = "image" | "video" | "audio" | "document" | "folder";
 
@@ -17,6 +18,11 @@ export type FileListItemProps = FileListItemType & {
 
 const FileListItem = (props: FileListItemProps) => {
     const { a11yOn } = props;
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleToggleMenu = () => {
@@ -45,6 +51,7 @@ const FileListItem = (props: FileListItemProps) => {
                         aria-label={
                             a11yOn ? `Options for ${props.title}` : undefined
                         }
+                        {...hoverProps}
                     >
                         <EllipsisVertical />
                     </SDiv>

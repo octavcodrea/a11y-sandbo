@@ -1,10 +1,14 @@
 import { Radio, Select } from "@mantine/core";
-import { useStateStore } from "../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 import { settingsLabelContainerClass, tabContentClass } from "../lib/utils";
 import SDiv from "./s-div";
 
 const SettingsTabGeneral = () => {
     const { a11yOn, is12HourTime } = useStateStore((state) => state);
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
 
     const labelClass = "font-semibold text-sm";
 
@@ -21,6 +25,7 @@ const SettingsTabGeneral = () => {
                 <Select
                     data={["Sunday", "Monday", "Saturday"]}
                     placeholder="Select day"
+                    {...hoverProps}
                 />
             </div>
 
@@ -30,6 +35,7 @@ const SettingsTabGeneral = () => {
                     <SDiv
                         className="flex items-center gap-2"
                         tag={a11yOn ? "label" : "div"}
+                        {...hoverProps}
                     >
                         12 hours
                         <Radio
@@ -44,6 +50,7 @@ const SettingsTabGeneral = () => {
                     <SDiv
                         className="flex items-center gap-2"
                         tag={a11yOn ? "label" : "div"}
+                        {...hoverProps}
                     >
                         24 hours
                         <Radio

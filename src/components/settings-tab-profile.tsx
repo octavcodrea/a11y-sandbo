@@ -1,4 +1,4 @@
-import { useStateStore } from "../lib/hooks";
+import { useHoverData, useStateStore } from "../lib/hooks";
 import {
     inputRootClass,
     settingsLabelContainerClass,
@@ -9,6 +9,10 @@ import { Modal, Button } from "@mantine/core";
 
 const SettingsTabProfile = () => {
     const { a11yOn, firstName, lastName } = useStateStore((state) => state);
+
+    const { handleMouseEnter: hoverOn, handleMouseLeave: hoverOff } =
+        useHoverData();
+    const hoverProps = { onMouseEnter: hoverOn, onMouseLeave: hoverOff };
 
     const [opened, { open, close }] = useDisclosure(false);
 
@@ -36,6 +40,7 @@ const SettingsTabProfile = () => {
                             value={firstName}
                             onChange={handleInputChange}
                             aria-label={a11yOn ? "First name" : undefined}
+                            {...hoverProps}
                         />
                     </div>
                 </div>
@@ -53,6 +58,7 @@ const SettingsTabProfile = () => {
                                 })
                             }
                             aria-label={a11yOn ? "Last name" : undefined}
+                            {...hoverProps}
                         />
                     </div>
                 </div>
@@ -62,6 +68,7 @@ const SettingsTabProfile = () => {
                     <button
                         className="rounded-lg bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-600 active:bg-red-700"
                         onClick={open}
+                        {...hoverProps}
                     >
                         Delete
                     </button>
@@ -77,17 +84,20 @@ const SettingsTabProfile = () => {
                     </h3>
                 }
                 centered
-                closeButtonProps={a11yOn ? { "aria-label": "Close modal" } : {}}
+                closeButtonProps={{
+                    "aria-label": a11yOn ? "Close modal" : undefined,
+                    ...hoverProps,
+                }}
             >
                 <p>
                     Are you sure you want to delete your account? This action
                     cannot be undone.
                 </p>
                 <div className="mt-5 flex justify-end gap-4">
-                    <Button onClick={close} color="gray">
+                    <Button onClick={close} color="gray" {...hoverProps}>
                         Cancel
                     </Button>
-                    <Button onClick={close} color="red">
+                    <Button onClick={close} color="red" {...hoverProps}>
                         Delete
                     </Button>
                 </div>
